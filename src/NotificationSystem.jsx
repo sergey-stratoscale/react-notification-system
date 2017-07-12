@@ -178,6 +178,9 @@ var NotificationSystem = createReactClass({
 
   removeNotification: function(notification) {
     var foundNotification = this.getNotificationRef(notification);
+    const uid = notification.uid ? notification.uid : notification;
+    const filteredNotifications = this.state.notifications.filter(n => n.uid !== uid);
+    this.setState({ notifications: filteredNotifications });
     return foundNotification && foundNotification._hideNotification();
   },
 
