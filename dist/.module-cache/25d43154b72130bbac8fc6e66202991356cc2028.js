@@ -33,23 +33,23 @@ var NotificationContainer = createReactClass({
 
     notifications = this.props.notifications.map(function(notification) {
       return (
-        <NotificationItem
-          ref={ 'notification-' + notification.uid }
-          key={ notification.uid + Date.now() }
-          notification={ notification }
-          getStyles={ self.props.getStyles }
-          onRemove={ self.props.onRemove }
-          noAnimation={ self.props.noAnimation }
-          allowHTML={ self.props.allowHTML }
-          children={ self.props.children }
-        />
+        React.createElement(NotificationItem, {
+          ref:  'notification-' + notification.uid, 
+          key:  notification.uid + Date.now(), 
+          notification:  notification, 
+          getStyles:  self.props.getStyles, 
+          onRemove:  self.props.onRemove, 
+          noAnimation:  self.props.noAnimation, 
+          allowHTML:  self.props.allowHTML, 
+          children:  self.props.children}
+        )
       );
     });
 
     return (
-      <div className={ 'notifications-' + this.props.position } style={ this._style }>
-        { notifications }
-      </div>
+      React.createElement("div", {className:  'notifications-' + this.props.position, style:  this._style}, 
+         notifications 
+      )
     );
   }
 });
