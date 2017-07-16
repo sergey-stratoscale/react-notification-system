@@ -35,7 +35,7 @@ var NotificationContainer = createReactClass({
       return (
         <NotificationItem
           ref={ 'notification-' + notification.uid }
-          key={ notification.uid + Date.now() }
+          key={ notification.key || notification.uid }
           notification={ notification }
           getStyles={ self.props.getStyles }
           onRemove={ self.props.onRemove }

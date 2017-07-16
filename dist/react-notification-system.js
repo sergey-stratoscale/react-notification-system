@@ -229,6 +229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      notifications = notifications.filter(function (n) {
 	        return n.uid !== _notification.uid;
 	      });
+	      _notification.key = _notification.uid + Date.now();
 
 	      notifications.push(_notification);
 
@@ -2548,7 +2549,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      notifications = this.props.notifications.map(function (notification) {
 	        return React.createElement(NotificationItem, {
 	          ref: 'notification-' + notification.uid,
-	          key: notification.uid + Date.now(),
+	          key: notification.key || notification.uid,
 	          notification: notification,
 	          getStyles: self.props.getStyles,
 	          onRemove: self.props.onRemove,

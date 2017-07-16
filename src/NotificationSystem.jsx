@@ -136,6 +136,7 @@ var NotificationSystem = createReactClass({
 
     // do not add if the notification already exists based on supplied uid
     notifications = notifications.filter(n => n.uid !== _notification.uid);
+    _notification.key = _notification.uid + Date.now();
 
     notifications.push(_notification);
 
